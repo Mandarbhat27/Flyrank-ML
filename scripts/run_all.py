@@ -22,6 +22,9 @@ def run_step(index: int, script: str, label: str) -> None:
 
 
 def main() -> None:
+    if sys.platform == "win32" and hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+
     if not RAW_PATH.exists():
         raise SystemExit(
             f"Starter data not found: {RAW_PATH}\n"
